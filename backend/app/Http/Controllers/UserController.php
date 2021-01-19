@@ -20,7 +20,6 @@ class UserController extends Controller
      */
     public function register(Request $request)
     {
-        // regisztrál usert
         try {
             $this->validate($request, [
                 'name' => 'required|min:4',
@@ -28,20 +27,23 @@ class UserController extends Controller
                 'password' => 'required|min:8',
             ]);
 
-            $user = User::create([
+            User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password)
             ]);
 
-            return response()->json(['name' => 'sd'], 200);
-
+            return response()->json(['message' => 'User created successfully.'], 200);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['message' => "Something went wrong"], 400);
         }
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login(Request $request)
     {
         $data = [
