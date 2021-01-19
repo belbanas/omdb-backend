@@ -19,7 +19,7 @@ class WatchlistController extends Controller
 
             return response()->json([
                 'watchlist' => $watchlist
-            ]);
+            ], 200);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
             return response()->json(["message:" => "Something went wrong."], 400);
@@ -28,6 +28,16 @@ class WatchlistController extends Controller
 
     public function showMovies(Request $request)
     {
-
+        try {
+            $user_id = auth()->user()->id;
+            $watchlist = Watchlist::where('user_id', $user_id)->get();
+            return response()->json([
+                'watchlist' => $watchlist,
+                'user_id' => $user_id
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['message' => 'Something went wrong'], 400);
+        }
     }
 }
