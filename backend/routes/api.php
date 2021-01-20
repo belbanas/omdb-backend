@@ -31,6 +31,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->post('/watchlist', [WatchListController::class, 'addMovie']);
 Route::middleware('auth:sanctum')->get('/watchlist', [WatchListController::class, 'showMovies']);
 
+Route::middleware('auth:sanctum')->post('/delete', [WatchListController::class, 'removeMovie']);
+
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
 //});
