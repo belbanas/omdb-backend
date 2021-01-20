@@ -12,7 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="bb5fdc11-9668-4aae-ae9a-19e4f35e06a4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Http/Controllers/WatchlistController.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Http/Controllers/WatchlistController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/Models/Watchlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/Models/Watchlist.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +49,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1611048867127</updated>
-      <workItem from="1611048868347" duration="8912000" />
+      <workItem from="1611048868347" duration="11596000" />
     </task>
     <task id="LOCAL-00001" summary="init with laravel and db migrations">
       <created>1611050288182</created>
@@ -71,7 +72,21 @@
       <option name="project" value="LOCAL" />
       <updated>1611056400973</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add watchlist controller">
+      <created>1611061925804</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1611061925804</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add watchlist add function">
+      <created>1611063900349</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1611063900349</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -92,7 +107,9 @@
     <MESSAGE value="init with laravel and db migrations" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="add login registration" />
-    <option name="LAST_COMMIT_MESSAGE" value="add login registration" />
+    <MESSAGE value="add watchlist controller" />
+    <MESSAGE value="add watchlist add function" />
+    <option name="LAST_COMMIT_MESSAGE" value="add watchlist add function" />
   </component>
   <component name="WindowStateProjectService">
     <state x="588" y="214" width="800" height="677" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611049173257">
@@ -111,9 +128,9 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="482" y="187" key="SettingsEditor/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1611050272424" />
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1611056403254">
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2" timestamp="1611063901626">
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
-    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1611056403254" />
+    <state x="588" y="288" width="800" height="528" key="Vcs.Push.Dialog.v2/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1611063901626" />
   </component>
 </project>
