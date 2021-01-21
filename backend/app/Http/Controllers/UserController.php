@@ -58,7 +58,7 @@ class UserController extends Controller
                 'user' => auth()->user()
             ], 200);
         } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
+            return response()->json(['message' => 'Unauthorised'], 401);
         }
 //        try {
 //            $user= User::where('email', $request->email)->first();

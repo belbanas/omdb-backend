@@ -22,7 +22,7 @@ class WatchlistController extends Controller
             ], 200);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
-            return response()->json(["message:" => "Something went wrong."], 400);
+            return response()->json(["message" => "Something went wrong."], 400);
         }
     }
 
@@ -48,7 +48,7 @@ class WatchlistController extends Controller
             $imdb_id = $request->imdb_id;
             $delete = Watchlist::where('imdb_id', $imdb_id)->where('user_id', $user_id)->delete();
             return response()->json([
-                'Message:' => 'Movie deleted!'
+                'message' => 'Movie deleted!'
             ], 200);
         } catch (\Exception $e){
             Log::error($e->getMessage());
