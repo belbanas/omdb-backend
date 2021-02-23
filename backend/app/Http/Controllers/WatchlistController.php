@@ -55,4 +55,22 @@ class WatchlistController extends Controller
             return response()->json(['message' => 'Something went wrong'], 400);
         }
     }
+
+    public function sendRating(Request $request){
+        try{
+            $user_id = auth()->user()->id;
+            $imdb_id = $request->imdb_id;
+            $rating = $request->rating;
+            $updateRating = Watchlist::where('imdb_id', $imdb_id)->where('user_id', $user_id)->update(['rating' => $rating]);
+            return response()->json([
+                'message' => 'Rating sent!'
+            ], 200);
+        }catch (\Exception $e){
+            Log::error($e->getMessage());
+            return response()->json(['message' => 'Something went wrong'], 400);
+        }
+
+
+
+    }
 }
