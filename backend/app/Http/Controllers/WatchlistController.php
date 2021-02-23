@@ -43,14 +43,47 @@ class WatchlistController extends Controller
 
     public function removeMovie(Request $request)
     {
-        try{
+        try {
             $user_id = auth()->user()->id;
             $imdb_id = $request->imdb_id;
             $delete = Watchlist::where('imdb_id', $imdb_id)->where('user_id', $user_id)->delete();
             return response()->json([
                 'message' => 'Movie deleted!'
             ], 200);
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['message' => 'Something went wrong'], 400);
+        }
+    }
+
+    public function sendRating(Request $request)
+    {
+        try {
+            $user_id = auth()->user()->id;
+            $imdb_id = $request->imdb_id;
+            $rating = $request->rating;
+            $updateRating = Watchlist::where('imdb_id', $imdb_id)->where('user_id', $user_id)->update(['rating' => $rating]);
+            return response()->json([
+                'message' => 'Rating sent!'
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['message' => 'Something went wrong'], 400);
+        }
+    }
+
+
+    public function sendReview(Request $request)
+    {
+        try {
+            $user_id = auth()->user()->id;
+            $imdb_id = $request->imdb_id;
+            $review = $request->review;
+            $sendReview = Watchlist::where('imdb_id', $imdb_id)->where('user_id', $user_id)->update(['review' => $review]);
+            return response()->json([
+                'message' => 'Review sent!'
+            ], 200);
+        } catch (\Exception $e) {
             Log::error($e->getMessage());
             return response()->json(['message' => 'Something went wrong'], 400);
         }
