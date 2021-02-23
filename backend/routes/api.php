@@ -28,10 +28,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     ], 200);
 });
 
-Route::middleware('auth:sanctum')->post('/watchlist', [WatchListController::class, 'addMovie']);
-Route::middleware('auth:sanctum')->get('/watchlist', [WatchListController::class, 'showMovies']);
-Route::middleware('auth:sanctum')->post('/delete', [WatchListController::class, 'removeMovie']);
-Route::middleware('auth:sanctum')->post('/rating', [WatchListController::class, 'sendRating']);
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::post('/watchlist', [WatchListController::class, 'addMovie']);
+    Route::get('/watchlist', [WatchListController::class, 'showMovies']);
+    Route::post('/delete', [WatchListController::class, 'removeMovie']);
+    Route::post('/rating', [WatchListController::class, 'sendRating']);
+    Route::post('/review', [WatchListController::class, 'sendReview']);
+});
+
+
 
 //Route::middleware('auth:api')->get('/user', function (Request $request) {
 //    return $request->user();
