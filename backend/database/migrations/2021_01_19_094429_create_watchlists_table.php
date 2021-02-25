@@ -16,7 +16,7 @@ class CreateWatchlistsTable extends Migration
         Schema::create('watchlists', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('imdb_id')->unique();
+            $table->string('imdb_id');
             $table->string('review')->default('');
             $table->integer('rating')->default(0);
             $table->unsignedBigInteger('user_id');

@@ -35,6 +35,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/rating', [WatchListController::class, 'sendRating']);
     Route::post('/review', [WatchListController::class, 'sendReview']);
 });
+Route::get('/reviews', [WatchListController::class, 'reviewList']);
+
 
 
 
