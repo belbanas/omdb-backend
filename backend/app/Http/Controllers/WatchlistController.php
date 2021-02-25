@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Watchlist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -89,4 +90,27 @@ class WatchlistController extends Controller
 //            return response()->json(['message' => 'Something went wrong'], 400);
 //        }
 //    }
+
+    public function reviewList(Request $request){
+        try {
+            $imdb_id = $request->imdb_id;
+            $reviews = Watchlist::where('imdb_id', $imdb_id)->get();
+            $result = [];
+            foreach($reviews as $item){
+                array_push($result, [
+                    'username' => User::where('id', $item->user_id)->first()->name,
+                    'review' => $item->review,
+                    'rating' => $item->rating,
+                    'id'=>$item->id
+                ]);
+            }
+            return response()->json([
+                'reviews' => $result
+
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['message' => 'Something went wrong'], 400);
+        }
+    }
 }
