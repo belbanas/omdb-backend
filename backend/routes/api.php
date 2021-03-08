@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WatchlistController;
 use Illuminate\Http\Request;
@@ -27,6 +28,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
         'user' => $user
     ], 200);
 });
+
+Route::get('/search', [ApiController::class, 'getMoviesByTitle']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/watchlist', [WatchListController::class, 'addMovie']);
