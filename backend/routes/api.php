@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/search', [ApiController::class, 'getMoviesByTitle']);
+Route::get('/movie/{id}', [ApiController::class, 'getMovieById']);
 
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/watchlist', [WatchListController::class, 'addMovie']);

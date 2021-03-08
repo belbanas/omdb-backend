@@ -24,4 +24,21 @@ class ApiController extends Controller
             return response()->json(["message" => $e->getMessage()], 400);
         }
     }
+
+    public function getMovieById($id)
+    {
+        try {
+            $imdbid = $id;
+            $curl = curl_init();
+            $url = 'http://www.omdbapi.com/?apikey=530b6ee1&i=' . $imdbid;
+            curl_setopt($curl, CURLOPT_URL, $url);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            $result = curl_exec($curl);
+            curl_close($curl);
+            return response()->json($result,200);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(["message" => $e->getMessage()], 400);
+        }
+    }
 }
