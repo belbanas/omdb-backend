@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 class WatchlistController extends Controller
 {
-    //
+
     public function addMovie(Request $request)
     {
         try {
@@ -74,23 +74,6 @@ class WatchlistController extends Controller
         }
     }
 
-//
-//    public function sendReview(Request $request)
-//    {
-//        try {
-//            $user_id = auth()->user()->id;
-//            $imdb_id = $request->imdb_id;
-//            $review = $request->review;
-//            $sendReview = Watchlist::where('imdb_id', $imdb_id)->where('user_id', $user_id)->update(['review' => $review]);
-//            return response()->json([
-//                'message' => 'Review sent!'
-//            ], 200);
-//        } catch (\Exception $e) {
-//            Log::error($e->getMessage());
-//            return response()->json(['message' => 'Something went wrong'], 400);
-//        }
-//    }
-
     public function reviewList(Request $request){
         try {
             $imdb_id = $request->imdb_id;
@@ -113,4 +96,5 @@ class WatchlistController extends Controller
             return response()->json(['message' => 'Something went wrong'], 400);
         }
     }
+
 }
