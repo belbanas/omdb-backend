@@ -22,6 +22,7 @@ class CreateWatchlistsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamp('created')->default(date('Y-m-d H:i:s'));
+            $table->unique(['user_id', 'imdb_id']);
         });
     }
 
