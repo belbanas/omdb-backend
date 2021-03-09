@@ -31,6 +31,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('/watchlist', [WatchListController::class, 'addMovie']);
     Route::get('/watchlist', [WatchListController::class, 'showMovies']);
+    Route::get('/user-review', [WatchListController::class, 'getUserReview']);
     Route::post('/delete', [WatchListController::class, 'removeMovie']);
     Route::post('/rating', [WatchListController::class, 'sendRating']);
     Route::post('/review', [WatchListController::class, 'sendReview']);

@@ -91,22 +91,39 @@ class WatchlistController extends Controller
 //        }
 //    }
 
-    public function reviewList(Request $request){
+    public function reviewList(Request $request)
+    {
         try {
             $imdb_id = $request->imdb_id;
             $reviews = Watchlist::where('imdb_id', $imdb_id)->get();
             $result = [];
-            foreach($reviews as $item){
+            foreach ($reviews as $item) {
                 array_push($result, [
                     'username' => User::where('id', $item->user_id)->first()->name,
                     'review' => $item->review,
                     'rating' => $item->rating,
-                    'id'=>$item->id
+                    'id' => $item->id
                 ]);
             }
             return response()->json([
                 'reviews' => $result
 
+            ], 200);
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            return response()->json(['message' => 'Something went wrong'], 400);
+        }
+    }
+
+    public function getUserReview(Request $request)
+    {
+        try {
+            $user_id = auth()->user()->id;
+            $imdb_id = $request->imdb_id;
+            $reviews = Watchlist::where('user_id', $user_id)->where('imdb_id', $imdb_id)->get();
+
+            return response()->json([
+                'reviews' => $reviews,
             ], 200);
         } catch (\Exception $e) {
             Log::error($e->getMessage());
